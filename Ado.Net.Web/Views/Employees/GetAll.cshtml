@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Ado.Net.Web.Models.Dto.EmployeeDto>
+
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+<h1>GetAll</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartamentName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartamentName)
+            </td>
+            <td>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Edit" asp-route-Id="@item.EmployeeID">Edit</a> |
+                <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Details" asp-route-Id="@item.EmployeeID">Details</a> |
+                <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Delete" asp-route-Id="@item.EmployeeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
